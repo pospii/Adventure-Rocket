@@ -491,42 +491,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 117501578953568743, guid: f70d6b877c4ca8a4c8ad3c4efc118a82, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: f185736efd1ccdb41a9b0511c64a12c5, type: 2}
-    - target: {fileID: 517347448708538881, guid: f70d6b877c4ca8a4c8ad3c4efc118a82, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 1620aa9adba53a64b9717201173b3302, type: 2}
-    - target: {fileID: 2038708601409951114, guid: f70d6b877c4ca8a4c8ad3c4efc118a82, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: f185736efd1ccdb41a9b0511c64a12c5, type: 2}
-    - target: {fileID: 3805680946598826191, guid: f70d6b877c4ca8a4c8ad3c4efc118a82, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 2e76bdd309544b84489d6e0dec30ff02, type: 2}
-    - target: {fileID: 3933479702551177713, guid: f70d6b877c4ca8a4c8ad3c4efc118a82, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 9cf0d2d09c1aee34da9b89f2fc2b7bcf, type: 2}
-    - target: {fileID: 5203018216251237191, guid: f70d6b877c4ca8a4c8ad3c4efc118a82, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 9cf0d2d09c1aee34da9b89f2fc2b7bcf, type: 2}
     - target: {fileID: 5610964305728219295, guid: f70d6b877c4ca8a4c8ad3c4efc118a82, type: 3}
       propertyPath: m_Name
       value: Rocket
       objectReference: {fileID: 0}
-    - target: {fileID: 7235151659073986746, guid: f70d6b877c4ca8a4c8ad3c4efc118a82, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 9cf0d2d09c1aee34da9b89f2fc2b7bcf, type: 2}
-    - target: {fileID: 7900404940541267991, guid: f70d6b877c4ca8a4c8ad3c4efc118a82, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 9cf0d2d09c1aee34da9b89f2fc2b7bcf, type: 2}
     - target: {fileID: 8059253608394055918, guid: f70d6b877c4ca8a4c8ad3c4efc118a82, type: 3}
       propertyPath: m_RootOrder
       value: 5
