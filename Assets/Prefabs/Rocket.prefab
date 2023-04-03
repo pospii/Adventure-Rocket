@@ -813,8 +813,7 @@ MonoBehaviour:
   success: {fileID: 8300000, guid: 985ef6834fa1b4142bd4dcd86034df05, type: 3}
   crashParticles: {fileID: 7954764944081121123}
   successParticles: {fileID: 572500151586840143}
-  "\u010Dau": {fileID: 0}
-  health: 0
+  HP: 5
 --- !u!65 &3582566729061963419
 BoxCollider:
   m_ObjectHideFlags: 0

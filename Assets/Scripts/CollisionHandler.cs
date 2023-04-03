@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class CollisionHandler : MonoBehaviour
 {
@@ -15,7 +16,8 @@ public class CollisionHandler : MonoBehaviour
     bool isTransitioning = false;
     bool collisionDisabled = false;
 
-    private int HP = 5;
+    public Text healthText;
+    public int HP = 5;
 
     void Start()
     {
@@ -25,6 +27,8 @@ public class CollisionHandler : MonoBehaviour
     void Update()
     {
         RespondToDebugKeys();
+        HP = PlayerPrefs.GetInt("Health", 0);
+        healthText.text = "Životy " + HP.ToString();
     }
 
     void RespondToDebugKeys()
