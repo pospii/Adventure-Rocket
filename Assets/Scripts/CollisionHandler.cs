@@ -14,6 +14,9 @@ public class CollisionHandler : MonoBehaviour
     [SerializeField] ParticleSystem successParticles;
     bool isTransitioning = false;
     bool collisionDisabled = false;
+
+    private int HP = 5;
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -50,7 +53,17 @@ public class CollisionHandler : MonoBehaviour
                 StartSuccessSequence();
                 break;
             default:
-                StartCrashSequence();
+                if (HP > 0)
+                {
+                    ReduceHealth();
+                    StartCrashSequence();
+                }
+                if (HP <= 0)
+                {
+                    StartCrashSequence();
+                    Invoke("Reset", levelLoadDelay);
+                    Debug.Log("Health " + HP.ToString());
+                }
                 break;
         }
     }
@@ -78,10 +91,28 @@ public class CollisionHandler : MonoBehaviour
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIndex = currentSceneIndex + 1;
         SceneManager.LoadScene(nextSceneIndex);
+        if (nextSceneIndex == 4)
+        {
+            HP = 5;
+            PlayerPrefs.SetInt("Health", HP);
+        }
     }
     void ReloadLevel()
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex);
+    }
+    void ReduceHealth()
+    {
+        HP = PlayerPrefs.GetInt("Health", 0);
+        HP--;
+        PlayerPrefs.SetInt("Health", HP);
+        Debug.Log("Health " + HP.ToString());
+    }
+    void Reset()
+    {
+        HP = 5;
+        PlayerPrefs.SetInt("Health", HP);
+        SceneManager.LoadScene(0);
     }
 }
