@@ -7,12 +7,12 @@ using UnityEngine.UI;
 public class CollisionHandler : MonoBehaviour
 {
     AudioSource audioSource;
-    [SerializeField] float levelLoadDelay = 1f;
+    [SerializeField] float loadDelay = 1f;
     [SerializeField] AudioClip crash;
     [SerializeField] AudioClip success;
-
     [SerializeField] ParticleSystem crashParticles;
     [SerializeField] ParticleSystem successParticles;
+
     bool isTransitioning = false;
     bool collisionDisabled = false;
 
@@ -26,21 +26,8 @@ public class CollisionHandler : MonoBehaviour
 
     void Update()
     {
-        RespondToDebugKeys();
         HP = PlayerPrefs.GetInt("Health", 0);
         healthText.text = "Životy " + HP.ToString();
-    }
-
-    void RespondToDebugKeys()
-    {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            LoadNextLevel();
-        }
-        else if (Input.GetKeyDown(KeyCode.C))
-        {
-            collisionDisabled = !collisionDisabled;
-        }
     }
 
     private void OnCollisionEnter(Collision other)
@@ -49,63 +36,69 @@ public class CollisionHandler : MonoBehaviour
         {
             return;
         }
-        switch (other.gameObject.tag)
+        if (other.gameObject.tag == "Friendly")
         {
-            case "Friendly":
-                break;
-            case "Finish":
-                StartSuccessSequence();
-                break;
-            default:
-                if (HP > 0)
+            return;
+        }  
+        else if (other.gameObject.tag == "Finish")
+        {
+            Success();
+        }
+        else
+        {
+            if (HP > 0)
                 {
                     ReduceHealth();
-                    StartCrashSequence();
+                    Crash();
                 }
-                if (HP <= 0)
+            if (HP <= 0)
                 {
-                    StartCrashSequence();
-                    Invoke("Reset", levelLoadDelay);
+                    Crash();
+                    Invoke("Reset", loadDelay);
                     Debug.Log("Health " + HP.ToString());
                 }
-                break;
         }
     }
-    void StartCrashSequence()
+
+    void Crash()
     {
         isTransitioning = true;
         audioSource.Stop();
         audioSource.PlayOneShot(crash);
         crashParticles.Play();
         GetComponent<Movement>().enabled = false;
-        Invoke("ReloadLevel", levelLoadDelay);
+        Invoke("Reload", loadDelay);
     }
-    void StartSuccessSequence()
+
+    void Success()
     {
         isTransitioning = true;
         audioSource.Stop();
         audioSource.PlayOneShot(success);
         successParticles.Play();
         GetComponent<Movement>().enabled = false;
-        Invoke("LoadNextLevel", levelLoadDelay);
+        Invoke("LoadNext", loadDelay);
 
     }
-    void LoadNextLevel()
+
+    void LoadNext()
     {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        int nextSceneIndex = currentSceneIndex + 1;
-        SceneManager.LoadScene(nextSceneIndex);
-        if (nextSceneIndex == 4)
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        int nextScene = currentScene + 1;
+        SceneManager.LoadScene(nextScene);
+        if (nextScene == 4)
         {
             HP = 5;
             PlayerPrefs.SetInt("Health", HP);
         }
     }
-    void ReloadLevel()
+
+    void Reload()
     {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex);
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentScene);
     }
+
     void ReduceHealth()
     {
         HP = PlayerPrefs.GetInt("Health", 0);
@@ -113,6 +106,7 @@ public class CollisionHandler : MonoBehaviour
         PlayerPrefs.SetInt("Health", HP);
         Debug.Log("Health " + HP.ToString());
     }
+
     void Reset()
     {
         HP = 5;

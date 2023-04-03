@@ -14,15 +14,14 @@ public class Oscillator : MonoBehaviour
         startingPosition = transform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (period == Mathf.Epsilon) {return;} // If period equals 0 then skip the following code
-        float cycles = Time.time / period; // continually growing over time
-        const float tau = Mathf.PI * 2; // constant value of 6.283
-        float rawSinWave = Mathf.Sin(cycles * tau); // going from -1 to 1
+        if (period == Mathf.Epsilon) {return;} 
+        float cycles = Time.time / period; 
+        const float tau = Mathf.PI * 2; 
+        float rawSinWave = Mathf.Sin(cycles * tau); 
 
-        movementFactor = (rawSinWave + 1f) / 2f; // recalculated to go from 0 to 1
+        movementFactor = (rawSinWave + 1f) / 2f; 
         
         Vector3 offset = movementVector * movementFactor;
         transform.position = startingPosition + offset;

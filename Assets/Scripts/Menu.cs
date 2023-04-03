@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement; // jinak by nám SceneManager nejel
+using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {

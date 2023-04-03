@@ -694,12 +694,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dee28990a2bff54fbb2283384bbe429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainThrust: 1000
-  rotationThrust: 100
-  mainEngine: {fileID: 8300000, guid: 729ccfffc5d2808489380652f7bc6883, type: 3}
-  mainEngineParticles: {fileID: 7386309209905081086}
-  leftThrusterParticles: {fileID: 4127202896710404370}
-  rightThrusterParticles: {fileID: 7182986665736550620}
+  mainPerformance: 1000
+  rotationPerformance: 100
+  engineAnimation: {fileID: 7386309209905081086}
+  leftNozzleAnimation: {fileID: 4127202896710404370}
+  rightNozzleAnimation: {fileID: 7182986665736550620}
+  engine: {fileID: 8300000, guid: 729ccfffc5d2808489380652f7bc6883, type: 3}
 --- !u!82 &1406800860
 AudioSource:
   m_ObjectHideFlags: 0
@@ -808,11 +808,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f48f6785789d249a2845423b0dec0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelLoadDelay: 1
+  loadDelay: 1
   crash: {fileID: 8300000, guid: 84e5b3ea2880b1446b155fc17a864f95, type: 3}
   success: {fileID: 8300000, guid: 985ef6834fa1b4142bd4dcd86034df05, type: 3}
   crashParticles: {fileID: 7954764944081121123}
   successParticles: {fileID: 572500151586840143}
+  healthText: {fileID: 0}
   HP: 5
 --- !u!65 &3582566729061963419
 BoxCollider:

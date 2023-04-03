@@ -12,7 +12,7 @@ public class QuitApplication : MonoBehaviour
         }
     }
 
-    public void QuitGame ()
+    public void QuitGame()
     {
         Application.Quit();
     }
