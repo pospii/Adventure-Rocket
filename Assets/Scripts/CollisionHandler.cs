@@ -91,6 +91,7 @@ public class CollisionHandler : MonoBehaviour
         {
             HP = 5;
             PlayerPrefs.SetInt("Health", HP);
+            Cursor.visible = true;
         }
     }
 
@@ -113,5 +114,6 @@ public class CollisionHandler : MonoBehaviour
         HP = 5;
         PlayerPrefs.SetInt("Health", HP);
         SceneManager.LoadScene(0);
+        Cursor.visible = true;
     }
 }
