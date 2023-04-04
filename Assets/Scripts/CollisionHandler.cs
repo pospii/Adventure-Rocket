@@ -22,6 +22,7 @@ public class CollisionHandler : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        Cursor.visible = false;
     }
 
     void Update()
