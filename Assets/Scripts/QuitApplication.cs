@@ -8,11 +8,11 @@ public class QuitApplication : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            Application.Quit();
+            QuitGame();
         }
     }
 
-    public void QuitGame()
+    void QuitGame()
     {
         Application.Quit();
     }
