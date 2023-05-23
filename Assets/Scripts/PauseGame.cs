@@ -11,14 +11,14 @@ public class PauseGame : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-                Pause();
+            Pause();
         }
         if (Input.GetKey(KeyCode.O))
         {
-                Resume();
+            Resume();
         }
     }
-    
+
     void Pause()
     {
         Time.timeScale = 0;

@@ -39,7 +39,7 @@ public class CollisionHandler : MonoBehaviour
         if (other.gameObject.tag == "Friendly")
         {
             return;
-        }  
+        }
         else if (other.gameObject.tag == "Finish")
         {
             Success();
@@ -47,15 +47,15 @@ public class CollisionHandler : MonoBehaviour
         else
         {
             if (HP > 0)
-                {
-                    ReduceHealth();
-                    Crash();
-                }
+            {
+                ReduceHealth();
+                Crash();
+            }
             if (HP <= 0)
-                {
-                    Crash();
-                    Invoke("Reset", loadDelay);
-                }
+            {
+                Crash();
+                Invoke("Reset", loadDelay);
+            }
         }
     }
 
@@ -89,7 +89,7 @@ public class CollisionHandler : MonoBehaviour
         int currentScene = SceneManager.GetActiveScene().buildIndex;
         int nextScene = currentScene + 1;
         SceneManager.LoadScene(nextScene);
-        
+
         if (nextScene == 4)
         {
             HP = 5;
