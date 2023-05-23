@@ -14,7 +14,6 @@ public class CollisionHandler : MonoBehaviour
     [SerializeField] ParticleSystem successParticles;
 
     bool isTransitioning = false;
-    bool collisionDisabled = false;
 
     public Text healthText;
     public int HP = 5;
@@ -33,7 +32,7 @@ public class CollisionHandler : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (isTransitioning || collisionDisabled)
+        if (isTransitioning)
         {
             return;
         }
@@ -56,7 +55,6 @@ public class CollisionHandler : MonoBehaviour
                 {
                     Crash();
                     Invoke("Reset", loadDelay);
-                    Debug.Log("Health " + HP.ToString());
                 }
         }
     }
@@ -71,6 +69,11 @@ public class CollisionHandler : MonoBehaviour
         Invoke("Reload", loadDelay);
     }
 
+    void Reload()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     void Success()
     {
         isTransitioning = true;
@@ -79,7 +82,6 @@ public class CollisionHandler : MonoBehaviour
         successParticles.Play();
         GetComponent<Movement>().enabled = false;
         Invoke("LoadNext", loadDelay);
-
     }
 
     void LoadNext()
@@ -87,6 +89,7 @@ public class CollisionHandler : MonoBehaviour
         int currentScene = SceneManager.GetActiveScene().buildIndex;
         int nextScene = currentScene + 1;
         SceneManager.LoadScene(nextScene);
+        
         if (nextScene == 4)
         {
             HP = 5;
@@ -95,18 +98,11 @@ public class CollisionHandler : MonoBehaviour
         }
     }
 
-    void Reload()
-    {
-        int currentScene = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentScene);
-    }
-
     void ReduceHealth()
     {
         HP = PlayerPrefs.GetInt("Health", 0);
         HP--;
         PlayerPrefs.SetInt("Health", HP);
-        Debug.Log("Health " + HP.ToString());
     }
 
     void Reset()

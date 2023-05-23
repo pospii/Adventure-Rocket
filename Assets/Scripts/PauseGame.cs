@@ -18,6 +18,7 @@ public class PauseGame : MonoBehaviour
                 Resume();
         }
     }
+    
     void Pause()
     {
         Time.timeScale = 0;

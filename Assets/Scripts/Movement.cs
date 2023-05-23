@@ -26,7 +26,7 @@ public class Movement : MonoBehaviour
         Rotation();
     }
 
-void Thrust()
+    void Thrust()
     {
         if (Input.GetKey(KeyCode.Space))
         {
